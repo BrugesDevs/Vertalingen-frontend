@@ -1,14 +1,39 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Vertalingsapp - {{url}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label>Filter op key</ion-label>
+    <ion-input placeholder="Filter" [formControl]="keyFilter"></ion-input>
+    <ion-label>(Aantal {{filteredVertalingen.length}})</ion-label>
+  </ion-item>
+
+  <!--<ion-item>-->
+  <!--<ion-label>Filter op tekst</ion-label>-->
+  <!--<ion-input placeholder="Filter"  [formControl]="tekstFilter"></ion-input>-->
+  <!--<ion-label>(Aantal {{filteredVertalingen.length}})</ion-label>-->
+  <!--</ion-item>-->
+
+  <ion-list>
+    <ion-grid>
+      <ion-row *ngFor="let vertaling of filteredVertalingen">
+        <ion-col>
+          <ion-item>
+            <ion-label text-wrap style="width: 30%; max-width: 400px; margin-right: 20px;">{{vertaling.sleutel}}
+              ({{vertaling.taal}})
+            </ion-label>
+            <ion-textarea [(ngModel)]="vertaling.changedVertaling"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button (click)="saveVertaling(vertaling)">Opslaan</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>
