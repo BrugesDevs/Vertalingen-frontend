@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Bestellen
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Sluiten</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label fixed>Key</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>NL</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>FR</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>DE</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button clear color="text" (click)="closeModal()" class="modal-button">Annuleren</button>
+    <button ion-button clear color="danger" (click)="voegVertalingToe()" class="modal-button">Voeg toe</button>
+  </ion-item>
+</ion-content>

@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, Events, NavController} from 'ionic-angular';
+import {AlertController, Events, ModalController, NavController} from 'ionic-angular';
 import {VertalingFacade} from "../facade/vertaling.facade";
 import {VertalingModel} from "../../core/model/vertaling.model";
 import {FormControl} from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
 import {EventChannel} from "../../config/event-channel";
 import {Config} from "../../config/config";
+import {VoegVertalingToeDialog} from "../../components/voeg-vertaling-toe.dialog";
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,7 @@ export class HomePage implements OnInit {
   constructor(public navCtrl: NavController,
               protected vertalingFacade: VertalingFacade,
               private alertCtrl: AlertController,
+              private modalCtrl: ModalController,
               private events: Events) {
   }
 
@@ -71,6 +73,11 @@ export class HomePage implements OnInit {
     confirm.present();
   }
 
+  protected voegVertalingToe() {
+    const orderModal = this.modalCtrl.create(VoegVertalingToeDialog, {});
+    orderModal.present();
+  }
+
   private filterVertalingenOnKey() {
     if (this.filterOnKey) {
       console.log("Filter on key: " + this.filterOnKey);
@@ -92,4 +99,5 @@ export class HomePage implements OnInit {
       this.filteredVertalingen = this.vertalingFacade.vertalingen;
     }
   }
+
 }
